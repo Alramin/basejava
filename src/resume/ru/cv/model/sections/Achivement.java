@@ -1,10 +1,10 @@
-package resume.ru.cv.entitys;
+package resume.ru.cv.model.sections;
 
-import resume.ru.cv.BaseEntity;
+import resume.ru.cv.AbstractSection;
 
 import java.util.Set;
 
-public class Achivement extends BaseEntity {
+public class Achivement extends AbstractSection {
 
     private Set<String> content;
 

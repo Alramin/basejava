@@ -1,10 +1,10 @@
-package resume.ru.cv.entitys;
+package resume.ru.cv.model.sections;
 
-import resume.ru.cv.BaseEntity;
+import resume.ru.cv.AbstractSection;
 
 import java.util.Map;
 
-public class Qualification extends BaseEntity {
+public class Qualification extends AbstractSection {
 
     private Map<String, String> content;
 
