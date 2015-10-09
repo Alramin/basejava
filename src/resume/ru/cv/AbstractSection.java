@@ -1,6 +1,6 @@
 package resume.ru.cv;
 
-public abstract class BaseEntity {
+public abstract class AbstractSection {
 
     public abstract String getContent();
 

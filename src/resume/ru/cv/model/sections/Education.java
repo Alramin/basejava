@@ -1,13 +1,13 @@
-package resume.ru.cv.entitys;
+package resume.ru.cv.model.sections;
 
-import resume.ru.cv.BaseEntity;
-import resume.ru.cv.entitys.util.Institution;
-import resume.ru.cv.entitys.util.Period;
+import resume.ru.cv.AbstractSection;
+import resume.ru.cv.model.util.Institution;
+import resume.ru.cv.model.util.Period;
 
 import java.util.Map;
 import java.util.Set;
 
-public class Education extends BaseEntity {
+public class Education extends AbstractSection {
 
     private Map<Institution, Set<Period>> content;
 

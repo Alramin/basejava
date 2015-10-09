@@ -1,4 +1,4 @@
-package resume.ru.cv.entitys.util;
+package resume.ru.cv.model.util;
 
 import java.time.LocalDate;
 
