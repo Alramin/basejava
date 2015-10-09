@@ -1,7 +1,7 @@
 package resume.ru.cv.storage;
 
 
-import resume.ru.cv.Resume;
+import resume.ru.cv.model.Resume ;
 
 import java.util.Collection;
 

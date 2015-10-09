@@ -2,24 +2,30 @@ package resume.ru.cv.model;
 
 import resume.ru.cv.AbstractSection;
 
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
+
 
 public class Resume {
 
     private final String uuid;
-    private final User employee;
-    private final Map<SectionType, AbstractSection> sections;
+    private final Employe employe;
+   // private final Map<Section, AbstractSection> sections;
 
-    public Resume(User employee, Map<SectionType, AbstractSection> sections) {
-        this(UUID.randomUUID().toString(), employee, sections);
+    private final List<AbstractSection> sections;
+
+    public Resume(Employe employe, List<AbstractSection> sections)
+    {
+        this(UUID.randomUUID().toString(), employe, sections);
     }
 
-    public Resume(String uuid, User employee, Map<SectionType, AbstractSection> sections) {
+    public Resume(String uuid, Employe employe, List<AbstractSection> sections) {
         this.uuid = uuid;
+        this.employe = employe;
         this.sections = sections;
-        this.employee = employee;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -48,28 +54,24 @@ public class Resume {
         return uuid;
     }
 
-    public User getEmployee() {
-        return employee;
+    public Employe getEmployee() {
+        return employe;
     }
 
-    public Map<SectionType, AbstractSection> getSections() {
+    public List<AbstractSection> getSections() {
         return sections;
     }
 
     @Override
     public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sections.forEach((type, value) -> sb
-                .append(type.getTitle())
-                .append(": ")
-                .append(value)
-                .append("\n"));
-
-
-        return "Resume\n" +
-                "\nuuid='" + uuid + "\'\n" +
-                "\nemployee:\n" + employee + '\n' +
-                "\n" + sb;
+        return "Resume{" +
+                "uuid='" + uuid + '\'' +
+                ", employe=" + employe +
+                ", sections=" + sections +
+                '}';
     }
+
+
+
+
 }
