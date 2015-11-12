@@ -1,16 +1,27 @@
 package ru.javawebinar.webapp.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import java.io.Serializable;
+
 /**
  * GKislin
  * 27.09.2015.
  */
-public class Link {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Link implements Serializable {
+    static final long serialVersionUID = 1L;
+
     private final String name;
     private final String url;
 
+    public Link() {
+        this("", null);
+    }
+
     public Link(String name, String url) {
         this.name = name;
-        this.url = url;
+        this.url = url == null ? "" : url;
     }
 
     public String getName() {
