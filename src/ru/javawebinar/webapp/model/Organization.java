@@ -1,8 +1,16 @@
 package ru.javawebinar.webapp.model;
 
+import ru.javawebinar.webapp.util.LocalDateAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static ru.javawebinar.webapp.util.DateUtil.NOW;
@@ -12,9 +20,15 @@ import static ru.javawebinar.webapp.util.DateUtil.of;
  * GKislin
  * 02.10.2015.
  */
-public class Organization {
-    private final Link homePage;
-    private final List<Position> positions;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Organization implements Serializable {
+    static final long serialVersionUID = 1L;
+
+    private Link homePage;
+    private List<Position> positions = new ArrayList<>();
+
+    public Organization() {
+    }
 
     public Organization(String name, String url, Position... positions) {
         this(new Link(name, url), Arrays.asList(positions));
@@ -58,14 +72,21 @@ public class Organization {
         return result;
     }
 
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class Position  implements Serializable {
+        static final long serialVersionUID = 1L;
 
+        @XmlJavaTypeAdapter(LocalDateAdapter.class)
+        private LocalDate startDate;
 
-    public static class Position {
+        @XmlJavaTypeAdapter(LocalDateAdapter.class)
+        private LocalDate endDate;
 
-        private final LocalDate startDate;
-        private final LocalDate endDate;
-        private final String title;
-        private final String description;
+        private String title;
+        private String description;
+
+        public Position() {
+        }
 
         public Position(int startYear, Month startMonth, String title, String description) {
             this(of(startYear, startMonth), NOW, title, description);
@@ -79,7 +100,23 @@ public class Organization {
             this.startDate = startDate;
             this.endDate = endDate;
             this.title = title;
-            this.description = description;
+            this.description = description == null ? "" : description;
+        }
+
+        public LocalDate getStartDate() {
+            return startDate;
+        }
+
+        public LocalDate getEndDate() {
+            return endDate;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getDescription() {
+            return description;
         }
 
         @Override
